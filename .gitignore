@@ -22,3 +22,5 @@
 
 # clojure-lsp cache
 /.lsp/*
+
+/resources/public/app.css

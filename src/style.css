@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .header {
+    @apply text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight;
+  }
+
+  .board {
+    @apply grid grid-rows-4 grid-flow-col gap-2 bg-zinc-500 rounded-lg place-content-center p-4;
+  }
+
+  .row {
+    @apply grid grid-cols-4 gap-2 rounded-lg shadow-lg;
+  }
+
+  .score {
+      @apply z-10 p-2 m-2 w-48 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none;
+  }
+
+  .score-high {
+      @apply bg-gray-200;
+  }
+
+  .btn-primary {
+      @apply p-2 m-2 w-48 dark:text-blue-800 dark:hover:bg-blue-100 dark:bg-white sm:w-auto text-base text-center text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-800 bg-blue-800 hover:bg-black;
+  }
+
+  .tile {
+    @apply text-black font-mono font-bold text-lg
+      transition duration-200 ease-in-out
+      box-border h-28 w-28 p-2 border-2
+      text-center
+      rounded-md shadow-md;
+  }
+
+  .tile-0 {
+    @apply bg-zinc-100;
+  }
+
+  .tile-2 {
+    @apply bg-blue-100;
+  }
+
+  .tile-4 {
+    @apply bg-blue-200;
+  }
+
+  .tile-8 {
+    @apply bg-blue-300;
+  }
+
+  .tile-16 {
+    @apply bg-blue-400;
+  }
+
+  .tile-32 {
+    @apply bg-blue-500 text-slate-50;
+  }
+
+  .tile-64 {
+    @apply bg-blue-600 text-slate-100;
+  }
+
+  .tile-128 {
+    @apply bg-blue-700 text-slate-200;
+  }
+
+  .tile-256 {
+    @apply bg-blue-800 text-slate-300;
+  }
+
+  .tile-512 {
+    @apply bg-blue-900 text-slate-300;
+  }
+
+  .tile-1024 {
+    @apply bg-purple-600 text-slate-300;
+  }
+
+  .tile-2048 {
+    @apply bg-purple-700 text-slate-300;
+  }
+
+  .tile-4096 {
+    @apply bg-purple-800 text-slate-200;
+  }
+
+}

@@ -1,44 +1,20 @@
 (ns cljs-2048.styles
   (:require
-   [spade.core :refer [defglobal defclass defkeyframes]]))
+   [goog.dom :as gdom]))
 
-(defglobal defaults
-  [:body
-   {:background-color :#ddd
-    :font-family ["Lucida Console", :Monaco, :monospace]
-    :color :#3A3A47
-    :width :100%}])
+(defn inject-node! [old-node new-node document]
+  (if old-node
+    (gdom/replaceNode new-node old-node)
+    (gdom/appendChild (.-head document) new-node)))
 
-(defclass board-row
-  []
-  {:clear :both})
+(defn inject-inline-link [document id link]
+  (let [old-link (gdom/getElement id)
+        new-link (gdom/createDom "link"
+                                 (clj->js {:id id
+                                           :rel :stylesheet
+                                           :href link}))]
+    (inject-node! old-link new-link document)))
 
-(defclass board-tile
-  [bg-color]
-  {:float            :left
-   :width            :5rem
-   :height           :3.5rem
-   :margin           :0.125rem
-   :padding          :0.5rem
-   :text-align       :center
-   :font-size        :2rem
-   :background-color bg-color
-   :border-radius    :0.25rem
-   :padding-top      :1.5rem})
 
-(defkeyframes anim-frames []
-  ["0%" {:opacity 0}]
-  ["100%" {:opacity 1}])
-
-(defclass new-tile
-  []
-  :animation [[(anim-frames) "560ms" 'ease-in-out]])
-
-(defclass board
-  []
-  {:background-color :#DDDDDD
-   :border-radius    :0.5rem
-   :padding          :0.5rem
-   :position        :absolute
-   :width            :25rem
-   :margin           :0.25rem})
+(defn inject-trace-styles [document]
+  (inject-inline-link document "--app.css--"  "app.css"))
